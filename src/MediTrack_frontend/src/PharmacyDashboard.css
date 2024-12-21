@@ -1,0 +1,74 @@
+.pharmacy-dashboard {
+    padding: 2rem 0;
+  }
+  
+  .pharmacy-dashboard h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .search-section {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  
+  .search-section form {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .search-section input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .prescription-details {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .prescription-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .prescription-card h2 {
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .medicines-list {
+    margin-top: 1.5rem;
+  }
+  
+  .medicines-list h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+  }
+  
+  .medicines-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .medicines-list li {
+    padding: 0.5rem;
+    background: var(--primary-color);
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .search-section form {
+      flex-direction: column;
+    }
+  
+    .prescription-card {
+      padding: 1rem;
+    }
+  }

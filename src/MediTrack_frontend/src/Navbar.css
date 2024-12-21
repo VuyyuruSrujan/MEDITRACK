@@ -1,0 +1,44 @@
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav-container {
+    display: flex; /* Arrange items in a row */
+    justify-content: space-between; /* Add space between logo and nav-links */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+  
+  .nav-links {
+    display: flex; /* Arrange list items horizontally */
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .nav-links li {
+    margin: 0 1rem; /* Add spacing between list items */
+  }
+  
+  .nav-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Set link color */
+    font-size: 1rem; /* Adjust font size */
+    transition: color 0.3s; /* Add a smooth hover effect */
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent-color); /* Change color on hover */
+  }
+  
