@@ -1,44 +1,77 @@
 .navbar {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show the menu toggle button on small screens */
+  }
+
+  .nav-links {
+    display: none; /* Hide the menu by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
   }
-  
-  .nav-container {
-    display: flex; /* Arrange items in a row */
-    justify-content: space-between; /* Add space between logo and nav-links */
-    align-items: center; /* Center items vertically */
+
+  .nav-links.open {
+    display: flex; /* Show the menu when open */
   }
-  
-  .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--accent-color);
-    text-decoration: none;
-  }
-  
-  .nav-links {
-    display: flex; /* Arrange list items horizontally */
-    list-style: none; /* Remove default bullet points */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-  }
-  
+
   .nav-links li {
-    margin: 0 1rem; /* Add spacing between list items */
+    margin: 0.5rem 0; /* Add spacing between vertical menu items */
   }
-  
-  .nav-links a {
-    text-decoration: none; /* Remove underline from links */
-    color: #333; /* Set link color */
-    font-size: 1rem; /* Adjust font size */
-    transition: color 0.3s; /* Add a smooth hover effect */
-  }
-  
-  .nav-links a:hover {
-    color: var(--accent-color); /* Change color on hover */
-  }
-  
+}

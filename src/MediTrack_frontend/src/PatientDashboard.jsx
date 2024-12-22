@@ -1,19 +1,26 @@
 import { motion } from 'framer-motion';
 import './PatientDashboard.css';
+import { useEffect, useState } from 'react';
+import { MediTrack_backend } from '../../declarations/MediTrack_backend';
+import { getGlobalPrincipal } from './Global';
+import { Principal } from '@dfinity/principal';
+
 
 function PatientDashboard() {
-  // Mock prescription data
-  const prescriptions = [
-    {
-      id: 1,
-      date: '2024-03-15',
-      doctor: 'Dr. Smith',
-      diagnosis: 'Common Cold',
-      medicines: 'Paracetamol 500mg\nVitamin C 1000mg',
-      notes: 'Take rest and drink plenty of water'
-    },
-    // Add more mock prescriptions as needed
-  ];
+  const principall = getGlobalPrincipal();
+  const [prescriptions , setprescriptions] = useState([]);
+
+  useEffect(() =>{
+    async function getPrescriptions(){
+      var answer = await MediTrack_backend.getPresecriptions(Principal.fromText(principall));
+      console.log("answer , prescription" , answer);
+      setprescriptions(answer);
+      console.log(answer);
+      // console.log("Date being sent:", new Date().toISOString());
+    };
+    getPrescriptions();
+  },[])
+
 
   return (
     <div className="patient-dashboard container">
@@ -21,7 +28,7 @@ function PatientDashboard() {
         className="neon-text"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-      >
+        >
         Patient Dashboard
       </motion.h1>
 
@@ -36,14 +43,15 @@ function PatientDashboard() {
           >
             <div className="prescription-header">
               <h3>{prescription.diagnosis}</h3>
-              <span className="date">{prescription.date}</span>
+              <span className="date">{new Date(prescription.date).toLocaleDateString()}</span>
             </div>
             <div className="prescription-details">
-              <p><strong>Doctor:</strong> {prescription.doctor}</p>
+              <p><strong>Doctor:</strong> {prescription.doc_nm}</p>
               <p><strong>Medicines:</strong></p>
               <pre>{prescription.medicines}</pre>
               <p><strong>Notes:</strong></p>
-              <p>{prescription.notes}</p>
+              <p>{prescription.additional_notes}</p>
+              
             </div>
           </motion.div>
         ))}

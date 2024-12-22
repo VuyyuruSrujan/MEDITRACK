@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import './DoctorDashboard.css';
+import { MediTrack_backend } from '../../declarations/MediTrack_backend';
+import { getGlobalPrincipal } from './Global';
+import { Principal } from '@dfinity/principal';
+import { useNavigate } from 'react-router-dom';
 
 function DoctorDashboard() {
+  var navigate = useNavigate();
+  const principall = getGlobalPrincipal();
   const [prescription, setPrescription] = useState({
     patientId: '',
     diagnosis: '',
@@ -10,9 +16,33 @@ function DoctorDashboard() {
     notes: ''
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(prescription);
+  async function handleSubmit(){
+    event.preventDefault();
+    // console.log(prescription);
+    try {
+      if(principall == null || principall == ""){
+        alert('connect to internet identity');
+      }else{
+        var PrescriptionDetails = {
+          doctor_id:Principal.fromText(principall),
+          patient_id:Principal.fromText(prescription.patientId),
+          diagnosis:prescription.diagnosis,
+          medicines:prescription.medicines,
+          additional_notes:prescription.notes,
+          date:new Date().toISOString(),
+          doc_nm:await MediTrack_backend.getDoctorNm(Principal.fromText(principall))
+        };
+        console.log("before pushing",PrescriptionDetails);
+        var answer = await MediTrack_backend.Prescription(PrescriptionDetails);
+        console.log("answer:",answer);
+        if(answer == "OK"){
+          alert("successfully submitted");
+        }
+      }
+    } catch (error) {
+      console.log("error",error);
+    };
+
   };
 
   return (
