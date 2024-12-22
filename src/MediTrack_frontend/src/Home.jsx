@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './Home.css';
-import { Link } from 'react-router-dom'; 
 
 function Home() {
   return (
@@ -30,9 +30,8 @@ function Home() {
         </div>
       </motion.div>
 
-      <div className="features container" >
-      <Link to="/doctor" id="featurescontainer"> 
-      <motion.div 
+      <div className="features container">
+        <motion.div 
           className="feature-card"
           whileHover={{ scale: 1.05 }}
           initial={{ opacity: 0, y: 50 }}
@@ -42,10 +41,9 @@ function Home() {
           <img src="/doctor.jpg" alt="Doctor" />
           <h2>For Doctors</h2>
           <p>Manage patient records and prescriptions efficiently</p>
+          <Link to="/register/doctor" className="btn">Register as Doctor</Link>
         </motion.div>
-        </Link>
 
-        <Link to="/patient" id="featurescontainer">
         <motion.div 
           className="feature-card"
           whileHover={{ scale: 1.05 }}
@@ -56,10 +54,9 @@ function Home() {
           <img src="/patient.jpg" alt="Patient" />
           <h2>For Patients</h2>
           <p>Access your medical history and prescriptions anytime</p>
+          <Link to="/register/patient" className="btn">Register as Patient</Link>
         </motion.div>
-        </Link>
 
-        <Link to="/pharmacy" id="featurescontainer">
         <motion.div 
           className="feature-card"
           whileHover={{ scale: 1.05 }}
@@ -70,8 +67,8 @@ function Home() {
           <img src="/pharmacy.jpg" alt="Pharmacy" />
           <h2>For Pharmacies</h2>
           <p>View verified prescriptions and serve patients better</p>
+          <Link to="/register/pharmacist" className="btn">Register as Pharmacist</Link>
         </motion.div>
-        </Link>
       </div>
     </div>
   );

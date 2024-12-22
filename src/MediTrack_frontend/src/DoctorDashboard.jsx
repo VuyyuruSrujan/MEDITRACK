@@ -12,7 +12,6 @@ function DoctorDashboard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle prescription submission
     console.log(prescription);
   };
 

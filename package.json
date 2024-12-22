@@ -16,6 +16,7 @@
     "src/MediTrack_frontend"
   ],
   "dependencies": {
+    "@dfinity/auth-client": "^2.2.0",
     "framer-motion": "^11.15.0",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.0"
