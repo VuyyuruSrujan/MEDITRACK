@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Principal } from '@dfinity/principal';
 import { MediTrack_backend } from '../../declarations/MediTrack_backend';
+import Footer from './Footer';
 
 function Home() {
   const principall = getGlobalPrincipal();
@@ -98,7 +99,7 @@ function Home() {
         </div>
       </motion.div>
 
-      <div className="features container">
+      <div className="features container" id='featurescontainer'>
         <motion.div 
           className="feature-card"
           whileHover={{ scale: 1.05 }}
@@ -138,6 +139,7 @@ function Home() {
           <button className="btn" onClick={PharmaConnect}>Register as Pharmacist</button>
         </motion.div>
       </div>
+      <Footer />
     </div>
   );
 }
