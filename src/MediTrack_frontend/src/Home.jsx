@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { Principal } from '@dfinity/principal';
 import { MediTrack_backend } from '../../declarations/MediTrack_backend';
 import Footer from './Footer';
+import {  FaUserMd, FaUser, FaPills } from 'react-icons/fa';
+
 
 function Home() {
   const principall = getGlobalPrincipal();
@@ -107,8 +109,8 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <img src="/doctor.jpg" alt="Doctor" />
-          <h2>For Doctors</h2>
+          {/* <img src="/doctor.jpg" alt="Doctor" /> */}
+          <h2><FaUserMd/><br/> For Doctors</h2>
           <p>Manage patient records and prescriptions efficiently</p>
           <button className="btn" onClick={DocCheckConnect}>Register as Doctor</button>
         </motion.div>
@@ -120,8 +122,8 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <img src="/patient.jpg" alt="Patient" />
-          <h2>For Patients</h2>
+          {/* <img src="/patient.jpg" alt="Patient" /> */}
+          <h2><FaUser /><br/>For Patients</h2>
           <p>Access your medical history and prescriptions anytime</p>
           <button className="btn" onClick={PatientCheck}>Register as Patient</button>
         </motion.div>
@@ -133,8 +135,8 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          <img src="/pharmacy.jpg" alt="Pharmacy" />
-          <h2>For Pharmacies</h2>
+          {/* <img src="/pharmacy.jpg" alt="Pharmacy" /> */}
+          <h2><FaPills /><br/>For Pharmacies</h2>
           <p>View verified prescriptions and serve patients better</p>
           <button className="btn" onClick={PharmaConnect}>Register as Pharmacist</button>
         </motion.div>
