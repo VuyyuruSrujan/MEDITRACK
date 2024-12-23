@@ -13,7 +13,7 @@ function Navbar() {
   const [principal, setPrincipal] = useState(getGlobalPrincipal() || "");
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   async function ConnectFun() {
     const authClient = await AuthClient.create();
     authClient.login({
@@ -165,6 +165,9 @@ function Navbar() {
           <button onClick={principal ? handleLogout : ConnectFun}>
             {principal ? "Logout" : "Connect"}
           </button>
+        </motion.li>
+        <motion.li whileHover={{ scale: 1.1 }}>
+          <p>Profile</p>
         </motion.li>
       </ul>
     </div>

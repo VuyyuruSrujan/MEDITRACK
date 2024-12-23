@@ -19,24 +19,37 @@ function PatientRegistration() {
     address: ''
   });
 
-  useEffect(() =>{
-    async function verify(){
-        try {
-            var check = await MediTrack_backend.getPatientDetails(Principal.fromText(principall));
-            console.log(check)
-            if (check && check.length > 0) {
-                console.log("Verification passed, navigating to /patient");
-                navigate('/patient');
-              } else {
-                console.log("Verification failed, staying on current page");
-              }
-        } catch (error) {
-            console.log("error",error);
+  useEffect(() => {
+    async function verify() {
+      try {
+        if (!principall) {
+          console.error("Principal ID is missing");
+          return;
         }
-       
-    };
+  
+        // Fetching patient details from the backend
+        const check = await MediTrack_backend.getPatientDetails(Principal.fromText(principall));
+        console.log("Patient Details:", check);
+  
+        // Check if the principal exists in the returned array
+        const isVerified = check.some(
+          (record) => record.prin && record.prin.toText() === principall
+        );
+  
+        if (isVerified) {
+          console.log("Verification passed, navigating to /patient");
+          navigate('/patient');
+        } else {
+          console.log("Verification failed, staying on current page");
+        }
+      } catch (error) {
+        console.error("Error in verify:", error);
+      }
+    }
+  
     verify();
-  },[])
+  }, [principall]); // Add principall as a dependency if it can change
+  
 
   async function handleSubmit(){
     event.preventDefault();

@@ -87,13 +87,12 @@ function Home() {
             animate={{ y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Welcome to HealthConnect
+            Welcome to MediTrack
           </motion.h2>
           <motion.p
             initial={{ y: 50 }}
             animate={{ y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
+            transition={{ delay: 0.4 }} >
             Connecting Doctors, Patients, and Pharmacies for Secure Healthcare records
           </motion.p>
         </div>

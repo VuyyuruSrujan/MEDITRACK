@@ -19,24 +19,35 @@ function DoctorRegistration() {
     experience: ''
   });
 
-  useEffect(() =>{
+  useEffect(() => {
     async function checkingFun() {
-        try {
-          var verification = await MediTrack_backend.getDoctordet(Principal.fromText(principall));
-          console.log("verification", verification);
-    
-          if (verification && verification.length > 0) {
-            console.log("Verification passed, navigating to /doctor");
-            navigate('/doctor');
-          } else {
-            console.log("Verification failed, staying on current page");
-          }
-        } catch (error) {
-          console.error("Error in checkingFun:", error);
+      try {
+        if (!principall) {
+          console.error("Principal ID is missing");
+          return;
         }
+  
+        const verification = await MediTrack_backend.getDoctordet(Principal.fromText(principall));
+        console.log("verification", verification);
+  
+        const isVerified = verification.some(
+          (record) => record.prin && record.prin.toText() === principall
+        );
+  
+        if (isVerified) {
+          console.log("Verification passed, navigating to /doctor");
+          navigate('/doctor');
+        } else {
+          console.log("Verification failed, staying on current page");
+        }
+      } catch (error) {
+        console.error("Error in checkingFun:", error);
       }
-      checkingFun();
-  } ,[])
+    }
+  
+    checkingFun();
+  }, [principall]);
+  
 
  async function handleSubmit(){
     event.preventDefault();
